@@ -6,15 +6,19 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.jdo.Extent;
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import pl.lukaz.poligon.gae.workservice.model.Message;
 
+@Service
 public class MessageRepository {
 
-	PersistenceManagerFactory pmfInstance = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+	@Autowired
+	PersistenceManagerFactory pmfInstance;
 
 	public Collection<Message> getAll() {
 		PersistenceManager pm = pmfInstance.getPersistenceManager();

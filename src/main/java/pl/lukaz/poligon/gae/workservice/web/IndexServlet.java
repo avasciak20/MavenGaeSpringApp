@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,9 @@ import pl.lukaz.poligon.gae.workservice.server.MessageRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class IndexServlet extends HttpServlet {
 
@@ -22,8 +26,14 @@ public class IndexServlet extends HttpServlet {
 	private static final Logger log = LoggerFactory
 			.getLogger(IndexServlet.class);
 
-	private MessageRepository messageRepository = new MessageRepository();
+	private MessageRepository messageRepository;
 	
+	@Override
+	public void init() throws ServletException {
+		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+		messageRepository=context.getBean(MessageRepository.class);
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
