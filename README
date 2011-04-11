@@ -1,0 +1,2 @@
+Application to work properly required app engine sdk. Best way to provide it is to run 'mvn gae:unpack'.
+Command 'mvn gae:run' runs application localy.
