@@ -1,4 +1,4 @@
-package pl.lukaz.poligon.gae.workservice.server;
+package pl.lukaz.poligon.gae.workservice.server.jdo;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;

@@ -4,5 +4,6 @@
 <title>Hello spring mvc</title>
 </head>
 <body>
-${message}
+${message}<br/>
+<a href="../account/createForm.do">Create user</a>
 </body>
