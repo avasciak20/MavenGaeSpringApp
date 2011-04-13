@@ -15,9 +15,9 @@ public class User implements Serializable, HasIdAsLong {
 	private Long id;
 	
 	@Persistent
-	private String firstName;
-	@Persistent
 	private String lastName;
+	@Persistent
+	private String firstName;
 	@Persistent
 	private String email;
 	@Persistent
