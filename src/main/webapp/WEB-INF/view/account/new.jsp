@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>New user data</h1>
-<form:form modelAttribute="newUser">
+<form:form modelAttribute="newUserForm" action=".">
 	<div>First name: <form:input path="firstName" /></div>
 	<div>Last name: <form:input path="lastName" /></div>
 	<div>Email: <form:input path="email" /></div>
