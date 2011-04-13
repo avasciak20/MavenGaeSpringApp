@@ -1,15 +1,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<spring:message var="pageTitle" code="account.new.pageTitle"/>
+
 <html>
 <head>
-<title>Create new account</title>
+<title>${pageTitle}</title>
 </head>
 <body>
-<h1>New user data</h1>
+<h1><spring:message code="account.new.message.enterUserData"/></h1>
 <form:form modelAttribute="newUserForm" action=".">
-	<div>First name: <form:input path="firstName" /></div>
-	<div>Last name: <form:input path="lastName" /></div>
-	<div>Email: <form:input path="email" /></div>
-	<div>Password: <form:input path="password" /></div>
+	<div><spring:message code="account.new.firstName"/><form:input path="firstName" /></div>
+	<div><spring:message code="account.new.lastName"/><form:input path="lastName" /></div>
+	<div><spring:message code="account.new.email"/><form:input path="email" /></div>
+	<div><spring:message code="account.new.password"/><form:input path="password" /></div>
 	<div><input type="submit" value="Submit"></input></div>
 </form:form>
 </body>

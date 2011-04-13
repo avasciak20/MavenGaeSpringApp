@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:p="http://www.springframework.org/schema/p" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -11,12 +10,20 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="pl.lukaz.poligon.gae.workservice"/>
-	<mvc:annotation-driven/>
-	
-	<bean class="pl.lukaz.poligon.gae.workservice.server.jdo.PMF"/>
+	<context:component-scan base-package="pl.lukaz.poligon.gae.workservice" />
+	<mvc:annotation-driven />
 
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/view/" p:suffix=".jsp" />
-	<mvc:view-controller path="account/registration_ok" view-name="account/registrationOk"/>
-	
+	<bean class="pl.lukaz.poligon.gae.workservice.server.jdo.PMF" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+		p:basename="classpath:messages" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/view/" p:suffix=".jsp" />
+		
+	<mvc:view-controller path="account/registration_ok"
+		view-name="account/registrationOk" />
+
 </beans>
