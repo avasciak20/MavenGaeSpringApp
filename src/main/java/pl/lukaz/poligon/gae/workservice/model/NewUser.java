@@ -1,9 +1,24 @@
 package pl.lukaz.poligon.gae.workservice.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public class NewUser {
+	
+	@NotNull
+	@NotBlank
 	private String firstName;
+	@NotNull
+	@NotBlank
 	private String lastName;
+	@NotNull
+	@NotBlank
 	private String email;
+	@NotNull
+	@NotBlank
+	@Size(min = 6)
 	private String password;
 	
 	public String getFirstName() {
