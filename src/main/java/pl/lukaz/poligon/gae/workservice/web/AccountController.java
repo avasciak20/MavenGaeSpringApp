@@ -41,7 +41,7 @@ public class AccountController {
 		return "account/new";
 	}
 	
-	@RequestMapping(value ="", method = RequestMethod.POST)
+	@RequestMapping(value ="new", method = RequestMethod.POST)
 	public String processCreateForm(@ModelAttribute("newUserForm") @Valid NewUser newUser, BindingResult result, Model model){
 		
 		log.error("bind result: "+result);

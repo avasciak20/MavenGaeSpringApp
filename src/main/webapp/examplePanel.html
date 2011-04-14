@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>New Web Project</title>
+        <style type="text/css">
+            .panel {
+                background-color: #F0F0F0;
+                border-color: #e0e0e0;
+                border-width: 1px;
+                border-style: solid;
+                
+                color: #65696B;
+                font-family: sans-serif;
+                font-size: 10px;
+				
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+            }
+            
+            .panel .header {
+                font-size: 10px;
+                font-weight: bold;
+                margin: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .panel .header .title {
+                font-size: 12px;
+            }
+			
+			.panel .header hr {
+				color: #e0e0e0;
+				background-color: #e0e0e0; 
+				height: 1px;
+				border: 0px;
+            }
+            
+            .panel .content {
+                margin: 5px;
+            }
+			
+			.panel .content .formtable{
+                margin: 10px;
+            }
+			
+			.panel .content .formtable th{
+                font-weight: bold;
+				text-align: right;
+            }
+			
+			.panel .content input{
+                border-color: #e0e0e0;
+				border-width: 1px;
+				border-style: solid;
+				margin: 0px;
+				padding: 3px;
+				color:#65696B;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				font-size: 10px;
+            }
+			
+			.panel .content select{
+                border-color: #e0e0e0;
+				border-width: 1px;
+				border-style: solid;
+				margin: 0px;
+				padding: 3px;
+				color:#65696B;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				font-size: 10px;
+            }
+        </style>
+    </head>
+    <body style="background-color: #c0c0c0;">
+        <ol style="width: 400px; background-color: white; padding: 20px; list-style: none">
+            <li class="panel">
+                <div class="header">
+                    <span class="title">Tytul panelu</span>
+                    <br/>
+                    To jest panel ktory cos tam robi
+					<hr/>
+                </div>
+                <div class="content">
+                    To jest jakis tam content. To co bedzie sie wyswietlac w panelu.
+					<table class="formtable">
+						<tbody>
+							<tr><th>First name</th><td><input type="text" value="your first name"/></td></tr>
+							<tr><th>Last name</th><td><input type="text" value="your last name"/></td></tr>
+							<tr><th>Position</th><td>
+								<select>
+									<option>developer</option>
+									<option>team manager</option>
+								</select>
+							</td></tr>
+						</tbody>
+					</table>
+					A tutaj jest jakis tekst po tabelce. Nie wiem co powinien zawierac ale jest i o to chodzi, bo widac jak sie to
+					bedzie ukladac.
+                </div>
+                <div class="footer">
+                </div>
+            </li>
+        </ol>
+    </body>
+</html>
