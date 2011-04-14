@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.lukaz.poligon.gae.workservice.model.NewUser;
+import pl.lukaz.poligon.gae.workservice.model.PositionFormBean;
 import pl.lukaz.poligon.gae.workservice.model.User;
 import pl.lukaz.poligon.gae.workservice.server.UserRepository;
 
@@ -30,13 +31,18 @@ public class AccountController {
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) throws Exception {
-		binder.setAllowedFields(new String[] {"firstName", "lastName", "email", "password"});
+		binder.setAllowedFields(new String[] {"firstName", "lastName", "email", "password", "*companyName",  "*positionName"});
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
 	}
 	
 	@RequestMapping(value = "new", method = RequestMethod.GET)
 	public String newUserForm(Model model){
-		model.addAttribute("newUserForm",new NewUser());
+		NewUser newUser = new NewUser();
+		newUser.getPositions().add(new PositionFormBean("bamab1","tamtam"));
+		newUser.getPositions().add(new PositionFormBean("bamab2","tamtamasdf"));
+		newUser.getPositions().add(new PositionFormBean("bamab3","tamtamagaga"));
+		
+		model.addAttribute("newUserForm",newUser);
 		
 		return "account/new";
 	}

@@ -1,5 +1,10 @@
 package pl.lukaz.poligon.gae.workservice.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -17,6 +22,13 @@ public class NewUser {
 	@Size(min = 6)
 	private String password;
 	
+	@NotNull
+	@Valid
+	private List<PositionFormBean> positions;
+	
+	public NewUser() {
+		positions=new ArrayList<PositionFormBean>();
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -40,5 +52,11 @@ public class NewUser {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public List<PositionFormBean> getPositions() {
+		return positions;
+	}
+	public void setPositions(List<PositionFormBean> positions) {
+		this.positions = positions;
 	}
 }
