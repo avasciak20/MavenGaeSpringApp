@@ -44,14 +44,13 @@ public class AccountController {
 	@RequestMapping(value ="new", method = RequestMethod.POST)
 	public String processCreateForm(@ModelAttribute("newUserForm") @Valid NewUser newUser, BindingResult result, Model model){
 		
-		log.error("bind result: "+result);
+		if(result.hasErrors())return "account/new";
 		
 		User user=new User(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getPassword());
 		userRepository.save(user);
 		
 		model.addAttribute(user);
 		
-		if(result.hasErrors())return "account/new";
 		return "redirect:registration_ok";
 	}
 }

@@ -4,6 +4,6 @@
 <title>Create new account</title>
 </head>
 <body>
-<h1>New user id: ${user.id}</h1>
+<h1>New user added ${user.id}</h1>
 </body>
 </html>
