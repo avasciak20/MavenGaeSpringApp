@@ -2,6 +2,8 @@ package pl.lukaz.poligon.gae.workservice.server.jdo;
 
 import org.springframework.stereotype.Repository;
 
+import com.google.appengine.api.datastore.Key;
+
 import pl.lukaz.poligon.gae.workservice.model.User;
 import pl.lukaz.poligon.gae.workservice.server.UserRepository;
 
@@ -16,5 +18,4 @@ public class JdoUserRepository extends JdoAbstractRepository<User> implements Us
 		des.setEmail(src.getEmail());
 		des.setPassword(src.getPassword());
 	}
-
 }

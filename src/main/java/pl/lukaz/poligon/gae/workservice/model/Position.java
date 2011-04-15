@@ -8,6 +8,7 @@ import javax.jdo.annotations.PrimaryKey;
 import pl.lukaz.poligon.gae.workservice.server.jdo.HasKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class Position implements HasKey{
@@ -55,5 +56,9 @@ public class Position implements HasKey{
 		this.positionName = positionName;
 	}
 	
-	
+	@Override
+	public String getStringKey() {
+		if(key==null)return "";
+		return KeyFactory.keyToString(key);
+	}
 }

@@ -4,4 +4,5 @@ import com.google.appengine.api.datastore.Key;
 
 public interface HasKey {
 	Key getKey();
+	String getStringKey();
 }

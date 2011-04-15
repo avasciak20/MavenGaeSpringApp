@@ -5,5 +5,5 @@
 </head>
 <body>
 ${message}<br/>
-<a href="../account/new.do">Create user</a>
+<a href="../account/new">Create user</a>
 </body>

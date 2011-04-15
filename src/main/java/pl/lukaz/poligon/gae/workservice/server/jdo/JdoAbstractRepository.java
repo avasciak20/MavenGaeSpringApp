@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jdo.PersistenceManagerFactoryUtils;
 import org.springframework.stereotype.Repository;
 
+import com.google.appengine.api.datastore.Key;
+
+import pl.lukaz.poligon.gae.workservice.model.User;
 import pl.lukaz.poligon.gae.workservice.server.AbstractRepository;
 
 @Repository
@@ -71,13 +74,14 @@ public abstract class JdoAbstractRepository<T extends HasKey> implements
 	}
 
 	@Override
-	public T findById(Long id) {
+	public T findById(Key key) {
 		PersistenceManager pm = getPersistenceManager();
-
-			T t = pm.getObjectById(getPersistentClass(), id);
-
-			return t;
+		
+		T t=pm.getObjectById(getPersistentClass(), key);
+		
+		return t;
 	}
+	
 
 	@Override
 	public void save(T t) {

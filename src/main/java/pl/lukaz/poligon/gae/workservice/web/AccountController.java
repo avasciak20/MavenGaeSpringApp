@@ -17,16 +17,19 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 import pl.lukaz.poligon.gae.workservice.model.UserFormBean;
 import pl.lukaz.poligon.gae.workservice.model.PositionFormBean;
 import pl.lukaz.poligon.gae.workservice.model.User;
 import pl.lukaz.poligon.gae.workservice.server.UserRepository;
 import pl.lukaz.poligon.gae.workservice.web.editor.GoogleDatastoreKeyEditor;
+import pl.lukaz.poligon.gae.workservice.web.exception.ResourceNotFoundException;
 
 @Controller
 @RequestMapping("/account")
@@ -72,5 +75,21 @@ public class AccountController {
 	public void list(Model model){
 		List<User> users = userRepository.findAll();
 		model.addAttribute("users", users);
+	}
+	
+	@RequestMapping(value = "/id/{stringKey}", method = RequestMethod.GET)
+	public String show(@PathVariable String stringKey, Model model){
+		Key key=null;
+		if(stringKey!=null){
+			key=KeyFactory.stringToKey(stringKey);
+		}
+		
+		if(key!=null){
+			User user=userRepository.findById(key);
+			model.addAttribute(user);
+			return "account/show";
+		}else{
+			throw new ResourceNotFoundException();
+		}
 	}
 }

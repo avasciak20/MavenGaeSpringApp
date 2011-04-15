@@ -12,6 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import pl.lukaz.poligon.gae.workservice.server.jdo.HasKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class User implements Serializable, HasKey {
@@ -101,5 +102,11 @@ public class User implements Serializable, HasKey {
 
 	public void setPositions(List<Position> positions) {
 		this.positions = positions;
+	}
+
+	@Override
+	public String getStringKey() {
+		if(key==null)return "";
+		return KeyFactory.keyToString(key);
 	}
 }

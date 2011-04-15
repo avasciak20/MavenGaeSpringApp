@@ -2,10 +2,10 @@ package pl.lukaz.poligon.gae.workservice.server;
 
 import java.util.List;
 
-import pl.lukaz.poligon.gae.workservice.model.HasIdAsLong;
+import com.google.appengine.api.datastore.Key;
 
 public interface AbstractRepository<T> {
-	T findById(Long id);
+	T findById(Key key);
 	void save(T t);
 	void delete(T t);
 	
