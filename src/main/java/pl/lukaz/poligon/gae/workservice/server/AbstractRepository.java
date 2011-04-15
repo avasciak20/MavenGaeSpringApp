@@ -4,7 +4,7 @@ import java.util.List;
 
 import pl.lukaz.poligon.gae.workservice.model.HasIdAsLong;
 
-public interface AbstractRepository<T extends HasIdAsLong> {
+public interface AbstractRepository<T> {
 	T findById(Long id);
 	void save(T t);
 	void delete(T t);

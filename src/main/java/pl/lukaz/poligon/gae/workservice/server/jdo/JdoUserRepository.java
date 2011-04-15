@@ -10,7 +10,7 @@ public class JdoUserRepository extends JdoAbstractRepository<User> implements Us
 
 	@Override
 	protected void rewrite(User src, User des) {
-		des.setId(src.getId()); 
+		des.setKey(src.getKey()); 
 		des.setFirstName(src.getFirstName()); 
 		des.setLastName(src.getLastName());
 		des.setEmail(src.getEmail());

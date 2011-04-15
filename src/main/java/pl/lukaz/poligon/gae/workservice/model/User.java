@@ -1,18 +1,24 @@
 package pl.lukaz.poligon.gae.workservice.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import pl.lukaz.poligon.gae.workservice.server.jdo.HasKey;
+
+import com.google.appengine.api.datastore.Key;
+
 @PersistenceCapable
-public class User implements Serializable, HasIdAsLong {
+public class User implements Serializable, HasKey {
 
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
-	private Long id;
+	private Key key;
 	
 	@Persistent
 	private String lastName;
@@ -23,24 +29,38 @@ public class User implements Serializable, HasIdAsLong {
 	@Persistent
 	private String password;
 	
-	public User(String firstName, String lastName, String email, String password) {
-		super();
+	@Persistent
+	private List<Position> positions;
+	
+	public User() {
+		positions=new ArrayList<Position>();
+	}
+	
+	public User(String firstName, String lastName, String email, String password, List<Position> positions) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.positions=positions;
 	}
 	
-	public User() {
+	public User(Key key, String lastName, String firstName, String email,
+			String password, List<Position> positions) {
 		super();
+		this.key = key;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.password = password;
+		this.positions = positions;
 	}
 
-	public Long getId() {
-		return id;
+	public Key getKey() {
+		return key;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKey(Key key) {
+		this.key = key;
 	}
 
 	public String getFirstName() {
@@ -73,5 +93,13 @@ public class User implements Serializable, HasIdAsLong {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Position> getPositions() {
+		return positions;
+	}
+
+	public void setPositions(List<Position> positions) {
+		this.positions = positions;
 	}
 }
